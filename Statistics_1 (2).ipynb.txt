@@ -1,0 +1,146 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Question no.1\n",
+        "-  random variable is a value that it contains of random experiment\n",
+        " for ex- tossing of coin ={HEAD,TAIL}\n",
+        "\n",
+        "Question no.2\n",
+        "- there are two types of random variable\n",
+        "- discrete random variable -> variable that store value that is whole number  ex-> rolling die  X={1,2,3,4,5,6}\n",
+        "- continous random variable -> variable that store value that stote continous value  . ex-> heights  X={123.4,124.9}\n",
+        "\n",
+        "Question no.3\n",
+        "- discrete random variable -> variable that store value that is whole number  ex-> rolling die  X={1,2,3,4,5,6}\n",
+        "- continous random variable -> variable that store value that stote continous value  . ex-> heights  X={123.4,124.9}\n",
+        "\n",
+        "\n",
+        "Question no.4\n",
+        "- binomial distribution is discrete distribution which contains only two events success(p) and failure (q=1-p)  with\n",
+        "\n",
+        "\n",
+        "Question no.5\n",
+        "- standard normal distribution scale down the mean=0 and std=1 , it is important because  you can use z-table to calculate , which has already calculated value\n",
+        "\n",
+        "Question no.6\n",
+        "-  if you take dataset of sample size greater than 30 then the shape of the mean will tend to look like a bell shape curve just like normal distribution\n",
+        "\n",
+        "Question no.7\n",
+        "- confidence interval tells about range in which population mean can lie\n",
+        "for ex- i am 95% sure population mean lie between [150,173].\n",
+        "\n",
+        "Question no.8\n",
+        "-expexted value is the average outcome of a random variable over many trials\n",
+        "it is define as\n",
+        "E(x)= pixi\n"
+      ],
+      "metadata": {
+        "id": "GFMNxLKVeuai"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "#loc=mean then scale=std\n",
+        "np.random.seed(1)\n",
+        "arr=np.random.normal(loc=50,scale=5,size=50)\n",
+        "print(np.mean(arr))\n",
+        "print(np.std(arr))\n",
+        "\n",
+        "plt.hist(arr)\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 465
+        },
+        "id": "MJtWoxvRqCQv",
+        "outputId": "619b22ef-cfe9-4f33-ee8e-002e8614e0e6"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "49.87242575996174\n",
+            "4.8479464147906794\n"
+          ]
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "<Figure size 640x480 with 1 Axes>"
+            ],
+            "image/png": "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\n"
+          },
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "import math\n",
+        "daily_sales=[220,245,210,265,230,25,260,275,240,255,235,260,245,250,225,270,265,255,250,260]\n",
+        "n=len(daily_sales)\n",
+        "\n",
+        "# as we have sample and we can calculate sample mean, sample std and it has size of n=20 but as sample is small so we apply tdist\n",
+        "\n",
+        "mn=np.mean(daily_sales)\n",
+        "sd=np.std(daily_sales)\n",
+        "\n",
+        "#with d=19 and 95% confidence and two tail\n",
+        "t=2.093\n",
+        "\n",
+        "margin_of_error=(t*(sd/math.sqrt(n)))\n",
+        "# print(margin_of_error)\n",
+        "\n",
+        "low=mn-margin_of_error\n",
+        "high=mn+margin_of_error\n",
+        "\n",
+        "ci=[low,high]\n",
+        "print(ci)\n"
+      ],
+      "metadata": {
+        "id": "XlWFAazNuVsR",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "a96f94e2-aca7-47d0-e05e-ed6ae5ba73cf"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[np.float64(212.91458026471201), np.float64(261.085419735288)]\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
